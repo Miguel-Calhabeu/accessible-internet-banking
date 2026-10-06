@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  font-family: Roboto, Arial, sans-serif;
+  color: #182536;
+  background: #f5f3f8;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button { font: inherit; cursor: pointer; }
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+}
+
+.controls {
+  width: min(484px, 100%);
+  min-height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.back {
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: #4f378b;
+  font-weight: 700;
+}
+
+.comparison {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #182536;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.comparison .mode-label { padding: 0; border: 0; background: transparent; color: inherit; font-weight: inherit; }
+.comparison .mode-label.active { color: #4f378b; }
+.switch {
+  position: relative;
+  display: inline-flex;
+  width: 48px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 100px;
+  background: #b0bac9;
+  transition: background .18s ease;
+}
+.switch[aria-checked="true"] { background: #6750a4; }
+.switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  transition: transform .18s ease;
+}
+.switch[aria-checked="true"]::after { transform: translateX(20px); }
+
+.screen {
+  position: relative;
+  width: 484px;
+  height: 924px;
+  flex: none;
+  overflow: hidden;
+  border: 2px solid #b0bac9;
+  border-radius: 16px;
+  background: white;
+}
+
+.text {
+  position: absolute;
+  margin: 0;
+  line-height: 1.4;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+}
+.brand { color: #4f378b; font-size: 18px; font-weight: 700; }
+.title { color: #182536; font-size: 28px; font-weight: 700; }
+.amount { color: #182536; font-size: 36px; font-weight: 700; }
+.subtotal { color: #182536; font-size: 24px; font-weight: 700; }
+.heading { color: #182536; font-size: 18px; font-weight: 700; }
+.body { color: #182536; font-size: 16px; font-weight: 400; }
+.small { color: #526171; font-size: 12px; font-weight: 400; }
+.step { color: #526171; font-size: 14px; font-weight: 400; }
+.muted { color: #526171; }
+
+.card {
+  position: absolute;
+  width: 424px;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: #f1edf6;
+  color: #182536;
+  text-align: left;
+}
+.card.lavender { background: #e2d4fc; }
+.card.peach { background: #ffe4d7; }
+.card.blue { background: #dcecfb; }
+.card.warning { background: #fff0d6; }
+.focus-status { color: #4f378b; font-size: 16px; font-weight: 700; }
+.card .card-title {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 16px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+.card .card-body {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 52px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+  white-space: pre-line;
+}
+
+.action-row {
+  position: absolute;
+  left: 28px;
+  width: 424px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.action {
+  min-width: 120px;
+  height: 52px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 16px;
+  background: #6750a4;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.action:focus-visible, .card:focus-visible, .switch:focus-visible, .back:focus-visible {
+  outline: 3px solid #182536;
+  outline-offset: 3px;
+}
+
+.select-screen .case-card {
+  position: absolute;
+  left: 28px;
+  width: 424px;
+  min-height: 95px;
+  padding: 16px;
+  border: 0;
+  border-radius: 12px;
+  background: #f1edf6;
+  color: #182536;
+  text-align: left;
+}
+.select-screen .case-card strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.4;
+}
+.select-screen .case-card span {
+  display: block;
+  margin-top: 6px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.select-screen .case-card:hover { background: #e2d4fc; }
+
+@media (max-width: 511px) {
+  #app { align-items: flex-start; padding: 12px; overflow-x: auto; }
+  .controls { min-width: 484px; }
+}
