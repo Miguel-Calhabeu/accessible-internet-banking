@@ -190,7 +190,72 @@ button { font: inherit; cursor: pointer; }
 }
 .select-screen .case-card:hover { background: #e2d4fc; }
 
-@media (max-width: 511px) {
-  #app { align-items: flex-start; padding: 12px; overflow-x: auto; }
-  .controls { min-width: 484px; }
+@media (max-width: 519px) {
+  #app {
+    width: 100%;
+    align-items: stretch;
+    padding: 12px;
+  }
+
+  .controls {
+    width: 100%;
+    min-width: 0;
+    max-width: 484px;
+    flex-wrap: wrap;
+    column-gap: 12px;
+    row-gap: 8px;
+    margin-inline: auto;
+  }
+
+  .comparison { margin-left: auto; }
+  .switch { flex: none; }
+
+  .screen {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 484px;
+    height: auto;
+    min-height: calc(100vh - 24px);
+    padding: 28px;
+    margin-inline: auto;
+  }
+
+  .controls + .screen { min-height: calc(100vh - 92px); }
+
+  .screen > .text,
+  .screen > .card,
+  .screen > .action-row,
+  .select-screen > .case-card {
+    position: static;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .card {
+    flex: none;
+    overflow: visible;
+    padding: 16px;
+  }
+
+  .card .card-title,
+  .card .card-body {
+    position: static;
+    display: block;
+  }
+
+  .card .card-body { margin-top: 6px; }
+
+  .action-row { min-height: 52px; }
+
+  .action {
+    max-width: 100%;
+    height: auto;
+    min-height: 52px;
+    padding: 12px 24px;
+    white-space: normal;
+  }
+
+  .select-screen .case-card { flex: none; }
 }
