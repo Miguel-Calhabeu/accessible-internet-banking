@@ -4,10 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CLARO / Internet Banking</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=1c3666c15259" />
+    <script src="./script.js?v=0572c3da314f" defer></script>
   </head>
   <body>
-    <main id="app"></main>
+    <div class="phone">
+      <header class="accessibility">
+        <div class="accessibility-controls" role="group" aria-label="Recursos de acessibilidade">
+          <button type="button" id="font-smaller">Diminuir fonte</button>
+          <button type="button" id="font-larger">Aumentar fonte</button>
+          <button type="button" id="contrast" aria-pressed="false">Alto contraste</button>
+          <a href="https://www.vlibras.gov.br/app2/">Ajuda com VLibras</a>
+        </div>
+        <p id="font-status" role="status">Tamanho da fonte: 100%</p>
+      </header>
+      <main id="app"></main>
+      <footer class="site-footer">
+        <p>Protótipo acadêmico. Pagamentos simulados.</p>
+        <p>Foto: <a href="https://www.pexels.com/photo/close-up-shot-of-a-person-using-a-laptop-8837800/">Yan Krukau, Pexels</a></p>
+      </footer>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
   </body>
 </html>

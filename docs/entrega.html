@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<title>Projeto final de acessibilidade • CLARO Internet Banking</title>
+<style>
+  @page { size: A4; margin: 18mm; }
+  body { max-width: 46rem; margin: 2rem auto; padding: 0 1rem; font: 11pt/1.45 Arial, sans-serif; color: #182536; }
+  h1, h2 { color: #4f378b; line-height: 1.2; }
+  h1 { font-size: 24pt; }
+  h2 { font-size: 15pt; break-after: avoid; }
+  li + li { margin-top: .25rem; }
+  a { color: #4f378b; }
+  @media print { body { margin: 0; padding: 0; } }
+</style>
+<main>
+<h1>Projeto final de acessibilidade</h1>
+<p>CLARO Internet Banking · Simulação de pagamento de fatura</p>
+
+<h2>Caminho feliz</h2>
+<ol>
+  <li>Na tela inicial, selecione <strong>Pagar fatura</strong>.</li>
+  <li>Confira o valor da fatura e selecione <strong>Selecionar pagamento total</strong>.</li>
+  <li>Na revisão, confira o valor a pagar e o saldo restante. Use <strong>Alterar opção de pagamento</strong> se quiser voltar.</li>
+  <li>Selecione <strong>Confirmar pagamento de R$ 1.500</strong> e confira o comprovante <strong>Fatura quitada</strong>, com saldo restante de R$ 0,00.</li>
+</ol>
+<p>O pagamento mínimo é um caminho alternativo com aviso de juros e saldo aberto. A seção <strong>Comparar os casos</strong> reúne as demonstrações de Problema e Solução. A solução do terceiro caso permite ocultar ofertas com o modo foco.</p>
+
+<h2>Público-alvo e nível de uso</h2>
+<p>O fluxo foi projetado para que pessoas idosas e autistas possam simular o pagamento com autonomia. Valores explícitos ajudam a interpretar as modalidades. A revisão permite corrigir a escolha, e o modo foco reduz distrações. Os controles de fonte e contraste apoiam a leitura.</p>
+<p>Declaração para a versão atual. A autonomia é uma meta de projeto e está pendente de avaliação com o público-alvo. Para finalizar a declaração, o grupo deve confrontar os resultados com as personas e os desafios das entregas anteriores e informar quais etapas foram concluídas sem ajuda, com ajuda ou com barreiras.</p>
+
+<h2>Identidade visual e conteúdo</h2>
+<p>A implementação manteve a marca CLARO, a paleta lilás e os cartões. O Codex substituiu o posicionamento fixo por uma moldura responsiva que reúne a barra de acessibilidade, o conteúdo e o rodapé. O botão <strong>Pagar fatura</strong> abre diretamente a escolha do valor. A alternância entre Problema e Solução fica nas demonstrações.</p>
+<p>A foto de Yan Krukau foi usada na escolha do pagamento e creditada no rodapé. Os valores e comprovantes são dados de simulação. <a href="https://www.pexels.com/photo/close-up-shot-of-a-person-using-a-laptop-8837800/">Foto no Pexels</a>.</p>
+
+<h2>Critérios WCAG 2.2 aplicados</h2>
+<ul>
+  <li>1.1.1 e 3.1.1. Texto alternativo na fotografia e idioma pt-BR na página.</li>
+  <li>1.3.1, 1.4.3, 1.4.4 e 1.4.10. Títulos semânticos, contraste, ampliação interna até 200% e reorganização do conteúdo conforme a largura.</li>
+  <li>2.1.1, 2.4.3 e 2.4.7. Botões nativos operáveis por Tab, Enter e Espaço, foco visível e foco no título após mudanças de etapa.</li>
+  <li>2.2.2. O caso de ofertas automáticas tem botão de pausa. Na solução, o modo foco oculta ofertas.</li>
+  <li>3.3.4. A revisão permite conferir e corrigir o valor antes de confirmar o pagamento simulado.</li>
+  <li>4.1.2 e 4.1.3. Estados de controles e anúncio do tamanho de fonte para tecnologias assistivas.</li>
+</ul>
+<p>O fluxo usa botões e dispensa preenchimento de campos. O protótipo usa o serviço VLibras para tradução automática. A aplicação desses critérios deve ser verificada com tecnologias assistivas. <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 no W3C</a>.</p>
+
+<h2>WAI-ARIA</h2>
+<ul>
+  <li><strong>Alto contraste</strong> usa <code>aria-pressed</code> para informar se o modo está ativado.</li>
+  <li><strong>Comparação</strong> usa <code>role="switch"</code> e <code>aria-checked</code> para indicar se a solução está selecionada.</li>
+  <li><strong>Tamanho da fonte</strong> usa <code>role="status"</code> para anunciar o percentual após um ajuste. Os botões usam <code>aria-disabled</code> para sinalizar os limites.</li>
+</ul>
+
+<h2>Tecnologias e uso de IA</h2>
+<p>HTML, CSS, JavaScript, Figma, VLibras e GitHub Actions para publicação via GitHub Pages. A tarefa enviada ao OpenAI Codex foi “preciso colocar isso no projeto”, com o checklist da disciplina anexado. O Codex usou o checklist para orientar as mudanças de interface e preparar este documento.</p>
+
+<h2>Links e avaliação</h2>
+<p>Endereço previsto para a publicação, a confirmar após o deploy. <a href="https://miguel-calhabeu.github.io/accessible-internet-banking/">Protótipo no GitHub Pages</a>.</p>
+<p>O grupo deve acompanhar a avaliação com pelo menos uma pessoa do público-alvo, registrar o feedback e enviar os formulários e a imagem previstos no checklist até 08/12/2026.</p>
+<p><strong>Link público do Figma</strong> · Pendente de inserção pelo grupo antes da entrega.</p>
+</main>
