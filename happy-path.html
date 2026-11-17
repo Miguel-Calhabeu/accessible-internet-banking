@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLARO / Happy Path</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./palette.css" />
+
+    <style>
+      /* ─── Visible boundary cues ───────────
+         WCAG 1.4.11 Non-text Contrast (AA):
+         boundaries must have ≥ 3:1 contrast.
+         WCAG 1.4.1: never rely on colour alone.
+         ────────────────────────────────── */
+
+      .screen > * + * { margin-top: 1rem; }
+
+      .screen .card {
+        border: 2px solid var(--border);
+        outline: 1px solid transparent;
+        position: relative;
+      }
+
+      .screen .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 4px;
+        border-radius: 4px 0 0 4px;
+      }
+
+      .screen .card.default::before   { background: var(--border); }
+      .screen .card.lavender::before  { background: #4f378b; }
+      .screen .card.peach::before     { background: #b85c3a; }
+      .screen .card.blue::before      { background: #2a6f97; }
+      .screen .card.warning::before   { background: #b8860b; }
+
+      .screen .card.lavender {
+        background: #e2d4fc;
+        border-color: #4f378b;
+      }
+
+      .screen .card.peach {
+        background: #ffe4d7;
+        border-color: #b85c3a;
+      }
+
+      .screen .card.blue {
+        background: #dcecfb;
+        border-color: #2a6f97;
+      }
+
+      .screen .card.warning {
+        background: #fff0d6;
+        border-color: #b8860b;
+      }
+
+      .screen .action {
+        border-width: 2px;
+      }
+
+      .screen .action:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .step-indicator {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        margin-bottom: .5rem;
+      }
+
+      .step-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        font-size: .75rem;
+        font-weight: 700;
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+
+      .step-badge.active {
+        background: var(--button);
+        color: var(--on-button);
+        border-color: var(--button);
+      }
+
+      .section-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 1.25rem 0;
+      }
+
+      .screen .inline-label {
+        display: inline-block;
+        padding: .15rem .5rem;
+        border: 1px solid var(--border);
+        border-radius: .25rem;
+        font-size: .75rem;
+        font-weight: 700;
+        color: var(--ink);
+        text-transform: uppercase;
+        letter-spacing: .03em;
+      }
+
+      .screen .inline-label.brand-label {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .screen .inline-label.warn-label {
+        border-color: #b8860b;
+        color: #7a5a00;
+      }
+
+      .high-contrast .screen .card {
+        border-color: #fff;
+      }
+
+      .high-contrast .screen .action {
+        border-color: #ffea62;
+        background: #ffea62;
+        color: #000;
+      }
+
+      .high-contrast .step-badge {
+        border-color: #ffea62;
+        color: #ffea62;
+      }
+
+      .high-contrast .step-badge.active {
+        background: #ffea62;
+        color: #000;
+      }
+
+      .high-contrast .section-divider {
+        background: #fff;
+      }
+    </style>
+
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div class="phone">
+      <header class="accessibility">
+        <div class="accessibility-controls" role="group" aria-label="Recursos de acessibilidade">
+          <button type="button" id="font-smaller">Diminuir fonte</button>
+          <button type="button" id="font-larger">Aumentar fonte</button>
+          <button type="button" id="contrast" aria-pressed="false">Alto contraste</button>
+          <a href="https://www.vlibras.gov.br/app2/">Ajuda com VLibras</a>
+        </div>
+        <p id="font-status" role="status">Tamanho da fonte: 100%</p>
+      </header>
+
+      <main>
+        <!-- ─── Step 1: Home ───────────── -->
+        <section class="screen" id="screen-home">
+          <p class="text brand">CLARO / Internet Banking</p>
+          <h1 class="text title">Internet Banking</h1>
+          <p class="text">Simule o pagamento da sua fatura com revisão antes de confirmar.</p>
+          <div class="action-row">
+            <button class="action" data-nav="screen-choose">Pagar fatura</button>
+          </div>
+
+          <div class="section-divider" role="separator"></div>
+
+          <h2 class="text heading">Etapas deste fluxo</h2>
+
+          <div class="card default">
+            <span class="card-title">
+              <span class="step-badge active" aria-hidden="true">1</span>
+              Escolher valor
+            </span>
+            <span class="card-body">Seleção entre pagamento total ou mínimo.</span>
+          </div>
+
+          <div class="card default">
+            <span class="card-title">
+              <span class="step-badge" aria-hidden="true">2</span>
+              Revisar
+            </span>
+            <span class="card-body">Confirmação dos dados antes de pagar.</span>
+          </div>
+
+          <div class="card default">
+            <span class="card-title">
+              <span class="step-badge" aria-hidden="true">3</span>
+              Comprovante
+            </span>
+            <span class="card-body">Resumo do pagamento realizado.</span>
+          </div>
+        </section>
+
+        <!-- ─── Step 2: Escolher ────────── -->
+        <section class="screen" id="screen-choose" hidden>
+          <p class="text brand">CLARO / Internet Banking</p>
+          <p class="text step">
+            <span class="step-indicator">
+              <span class="step-badge" aria-hidden="true">1</span>
+              Etapa 1 de 3 · Escolher valor
+            </span>
+          </p>
+          <h1 class="text title">Como deseja pagar?</h1>
+
+          <img class="payment-image" src="https://images.pexels.com/photos/8837800/pexels-photo-8837800.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=960" alt="Pessoa usando um notebook ao lado de um caderno sobre a mesa" width="960" height="640">
+
+          <p class="text subtotal">Fatura: R$ 1.500,00</p>
+
+          <div class="card lavender">
+            <span class="card-title">
+              <span class="inline-label brand-label">Recomendado</span>
+              Pagamento total · R$ 1.500
+            </span>
+            <span class="card-body">Quita esta fatura. Saldo restante: R$ 0,00.</span>
+          </div>
+          <div class="action-row">
+            <button class="action" data-nav="screen-review-total">Selecionar pagamento total</button>
+          </div>
+
+          <div class="card default">
+            <span class="card-title">Pagamento mínimo · R$ 300</span>
+            <span class="card-body">Paga apenas parte da fatura. Restam R$ 1.200 sujeitos a juros e encargos.</span>
+          </div>
+          <div class="action-row">
+            <button class="action" data-nav="screen-review-minimum">Selecionar pagamento mínimo</button>
+          </div>
+
+          <p class="text small muted">Parcelamento: consulte as condições e o custo total antes de contratar.</p>
+
+          <div class="action-row">
+            <button class="back" data-nav="screen-home">Voltar ao início</button>
+          </div>
+        </section>
+
+        <!-- ─── Step 3: Revisar (total) ─── -->
+        <section class="screen" id="screen-review-total" hidden>
+          <p class="text brand">CLARO / Internet Banking</p>
+          <p class="text step">
+            <span class="step-indicator">
+              <span class="step-badge" aria-hidden="true">2</span>
+              Etapa 2 de 3 · Revisar
+            </span>
+          </p>
+          <h1 class="text title">Revise antes de pagar</h1>
+
+          <div class="card lavender">
+            <span class="card-title">Pagamento total selecionado</span>
+            <span class="card-body">
+              Valor da fatura: R$ 1.500,00
+              Você pagará: R$ 1.500,00
+              Saldo restante: R$ 0,00
+            </span>
+          </div>
+
+          <p class="text">Este pagamento quita a fatura apresentada.</p>
+
+          <div class="action-row">
+            <button class="action" data-nav="screen-choose">Alterar opção de pagamento</button>
+          </div>
+          <div class="action-row">
+            <button class="action" data-nav="screen-receipt-total">Confirmar pagamento de R$ 1.500</button>
+          </div>
+        </section>
+
+        <!-- ─── Step 3: Revisar (mínimo) ── -->
+        <section class="screen" id="screen-review-minimum" hidden>
+          <p class="text brand">CLARO / Internet Banking</p>
+          <p class="text step">
+            <span class="step-indicator">
+              <span class="step-badge" aria-hidden="true">2</span>
+              Etapa 2 de 3 · Revisar
+            </span>
+          </p>
+          <h1 class="text title">Revise antes de pagar</h1>
+
+          <div class="card default">
+            <span class="card-title">Pagamento mínimo selecionado</span>
+            <span class="card-body">
+              Valor da fatura: R$ 1.500,00
+              Você pagará: R$ 300,00
+              Saldo restante: R$ 1.200,00
+            </span>
+          </div>
+
+          <div class="card warning">
+            <span class="card-title">
+              <span class="inline-label warn-label">Atenção</span>
+              A fatura não será quitada
+            </span>
+            <span class="card-body">R$ 1.200 ficarão em aberto, sujeitos a juros e encargos. Consulte as condições do contrato antes de continuar.</span>
+          </div>
+
+          <p class="text">Se deseja quitar a fatura, altere para pagamento total.</p>
+
+          <div class="action-row">
+            <button class="action" data-nav="screen-choose">Alterar opção de pagamento</button>
+          </div>
+          <div class="action-row">
+            <button class="action" data-nav="screen-receipt-minimum">Confirmar pagamento de R$ 300</button>
+          </div>
+        </section>
+
+        <!-- ─── Step 4: Comprovante (total) ─ -->
+        <section class="screen" id="screen-receipt-total" hidden>
+          <p class="text brand">CLARO / Internet Banking</p>
+          <p class="text step">
+            <span class="step-indicator">
+              <span class="step-badge active" aria-hidden="true">3</span>
+              Etapa 3 de 3 · Comprovante
+            </span>
+          </p>
+          <h1 class="text title">Fatura quitada</h1>
+
+          <div class="card lavender">
+            <span class="card-title">R$ 1.500,00 pagos</span>
+            <span class="card-body">
+              Modalidade: pagamento total
+              Saldo restante: R$ 0,00
+              Número da operação: 002
+            </span>
+          </div>
+
+          <div class="action-row">
+            <button class="action" data-nav="screen-home">Voltar ao início</button>
+          </div>
+        </section>
+
+        <!-- ─── Step 4: Comprovante (mínimo) -->
+        <section class="screen" id="screen-receipt-minimum" hidden>
+          <p class="text brand">CLARO / Internet Banking</p>
+          <p class="text step">
+            <span class="step-indicator">
+              <span class="step-badge active" aria-hidden="true">3</span>
+              Etapa 3 de 3 · Comprovante
+            </span>
+          </p>
+          <h1 class="text title">Pagamento realizado</h1>
+
+          <div class="card default">
+            <span class="card-title">R$ 300,00 pagos</span>
+            <span class="card-body">
+              Modalidade: pagamento mínimo
+              Saldo restante: R$ 1.200,00
+              Número da operação: 001
+            </span>
+          </div>
+
+          <div class="card warning">
+            <span class="card-title">Ainda existe saldo em aberto</span>
+            <span class="card-body">O saldo restante está sujeito a juros e encargos. A fatura não foi quitada.</span>
+          </div>
+
+          <div class="action-row">
+            <button class="action" data-nav="screen-home">Voltar ao início</button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Protótipo acadêmico · Happy path com barreiras visuais explícitas.</p>
+        <p>Foto: <a href="https://www.pexels.com/photo/close-up-shot-of-a-person-using-a-laptop-8837800/">Yan Krukau, Pexels</a></p>
+      </footer>
+    </div>
+
+    <script>
+      document.querySelector('main').addEventListener('click', e => {
+        const btn = e.target.closest('[data-nav]');
+        if (!btn) return;
+
+        const targetId = btn.dataset.nav;
+        document.querySelectorAll('.screen').forEach(s => s.hidden = true);
+        document.getElementById(targetId).hidden = false;
+
+        const h1 = document.querySelector(`#${targetId} h1`);
+        if (h1) { h1.tabIndex = -1; h1.focus(); }
+      });
+
+      document.querySelectorAll('.screen:not(#screen-home)').forEach(s => s.hidden = true);
+    </script>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+  </body>
+</html>
