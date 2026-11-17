@@ -1,0 +1,71 @@
+/* ─── Color Palette ───────────────────
+   Organizes all colors used in the app.
+   Raw tokens → Semantic mappings.
+   ─────────────────────────────────── */
+
+/* ── Raw tokens ──────────────────── */
+
+:root {
+  /* Neutral scale  (purple-gray undertone) */
+  --color-neutral-0:    #ffffff;
+  --color-neutral-50:   #f5f3f8;
+  --color-neutral-100:  #f1edf6;
+  --color-neutral-500:  #737e8d;
+  --color-neutral-600:  #526171;
+  --color-neutral-900:  #182536;
+
+  /* Brand – purple */
+  --color-brand-400:  #6750a4;
+  --color-brand-500:  #4f378b;
+
+  /* Tinted card tones */
+  --color-tone-lavender:  #e2d4fc;
+  --color-tone-peach:     #ffe4d7;
+  --color-tone-blue:      #dcecfb;
+
+  /* Feedback */
+  --color-feedback-warning:  #fff0d6;
+
+  /* High-contrast overrides */
+  --hc-background: #000;
+  --hc-surface:    #000;
+  --hc-ink:        #fff;
+  --hc-accent:     #ffea62;
+  --hc-card:       #181818;
+}
+
+/* ── Semantic mappings ───────────── */
+
+:root {
+  --palette-background:    var(--color-neutral-50);
+  --palette-surface:       var(--color-neutral-0);
+  --palette-ink:           var(--color-neutral-900);
+  --palette-secondary:     var(--color-neutral-600);
+  --palette-border:        var(--color-neutral-500);
+  --palette-card:          var(--color-neutral-100);
+  --palette-accent:        var(--color-brand-500);
+  --palette-button:        var(--color-brand-400);
+  --palette-on-button:     var(--color-neutral-0);
+  --palette-lavender:      var(--color-tone-lavender);
+  --palette-peach:         var(--color-tone-peach);
+  --palette-blue:          var(--color-tone-blue);
+  --palette-warning:       var(--color-feedback-warning);
+}
+
+/* ── High-contrast semantic mappings ─ */
+
+:root.high-contrast {
+  --palette-background:    var(--hc-background);
+  --palette-surface:       var(--hc-surface);
+  --palette-ink:           var(--hc-ink);
+  --palette-secondary:     var(--hc-ink);
+  --palette-border:        var(--hc-ink);
+  --palette-card:          var(--hc-card);
+  --palette-accent:        var(--hc-accent);
+  --palette-button:        var(--hc-accent);
+  --palette-on-button:     var(--hc-background);
+  --palette-lavender:      var(--hc-card);
+  --palette-peach:         var(--hc-card);
+  --palette-blue:          var(--hc-card);
+  --palette-warning:       var(--hc-card);
+}
